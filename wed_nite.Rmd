@@ -1,0 +1,63 @@
+---
+title: "Wed_Inclass"
+author: "Sierra Green"
+date: "11/17/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# This is a quick-turn challenge.  It relates to Question 2 of Quiz 8 in our course. Take a look at that quiz question and then.
+
+## The researchers wanted to know if the spiders could run faster, on average, without the hindrance of a pedipalp
+
+### Finish this writeUp and knit the result to a pdf file.  
+
+### Email the pdf as an attachment to wkitto1@avc.edu no later than 10 pm tonight
+
+### Think about what you would need to do to add this to your github account
+
+
+
+```{r, message=FALSE}
+require(tidyverse)
+require(tigerstats)
+require(abd)
+data("SpiderSpeed")
+```
+
+```{r,}
+#mydata <- gather(SpiderSpeed, variable, value) 
+dat <- gather(SpiderSpeed, BorA, speed)
+```
+
+
+## SpiderSpeed
+
+```{r}
+boxplot(speed~BorA,data=dat)
+title(main = "SpiderSpeed")
+```
+
+Based off the plot, the spiders seems to go faster after the pedipalp is removed than before having it removed. So therefore the speed.after is faster than the speed.before.
+
+
+
+```{r}
+favstats(speed~BorA,data=dat)
+```
+
+
+The chart shows that the average for the spiders running faster after the pedipalp is removed is 3.853750 and before it was removed it was 2.668125.
+
+
+
+```{r}
+t.test(speed~BorA,data=dat)
+```
+
+
+The p-value is at 0.0004611 which is very small for us to tell between the differences in speed before and after the pedipalp was removed. It shows that the average for the spiders running faster after the pedipalp is removed is 3.853750 and before it was removed it was 2.668125. The spiders seems to go faster after the pedipalp is removed than before having it removed. The speed.after is faster than the speed.before. In this case I would reject the hypothesis.
+
+
+
